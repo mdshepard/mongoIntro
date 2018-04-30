@@ -15,10 +15,8 @@ MongoClient.connect(url, function(err, client) {
   const db = client.db(dbName);
 
   insertDocuments(db, function() {
-    updateDocument(db, function() {
-      removeDocument(db, function() {
-        client.close();
-      });
+    indexCollection(db, function() {
+      client.close();
     });
   });
 });
@@ -86,4 +84,3 @@ const insertDocuments = function(db, callback) {
     );
   };
 
-  
